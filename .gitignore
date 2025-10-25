@@ -1,0 +1,20 @@
+# Genel
+.DS_Store
+*.log
+.vscode/
+.idea/
+
+# Backend (Python)
+backend/.venv/
+backend/__pycache__/
+backend/.pytest_cache/
+backend/.mypy_cache/
+backend/.env
+backend/*.env
+backend/*.sqlite3
+
+# Frontend (Node/React)
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.*.local
