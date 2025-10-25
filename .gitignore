@@ -1,24 +1,72 @@
-# Genel
-.DS_Store
-*.log
-.vscode/
-.idea/
-
-# Backend (Python)
-backend/.venv/
-backend/__pycache__/
-backend/.pytest_cache/
-backend/.mypy_cache/
-backend/.env
-backend/*.env
-backend/*.sqlite3
-
-# Frontend (Node/React)
-frontend/node_modules/
-frontend/dist/
-frontend/.env
-frontend/.env.*.local
+# ----------------------------------------
+# 🌿 ENVIRONMENT & SECRETS
+# ----------------------------------------
 .env
 .env.*
 *.env
 backend/.env
+**/.env
+
+# ----------------------------------------
+# 🪄 NODE.JS
+# ----------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+package-lock.json
+yarn.lock
+
+# ----------------------------------------
+# 🐍 PYTHON
+# ----------------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+dist/
+build/
+venv/
+env/
+ENV/
+.venv/
+
+# ----------------------------------------
+# 💾 DATABASES / DATA FILES
+# ----------------------------------------
+*.sqlite3
+*.db
+*.sqlite
+*.log
+*.csv
+
+# ----------------------------------------
+# 🧠 IDE / EDITOR SETTINGS
+# ----------------------------------------
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# ----------------------------------------
+# 🧰 SYSTEM FILES
+# ----------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ----------------------------------------
+# 🧹 OTHER GENERATED FILES
+# ----------------------------------------
+*.pid
+*.seed
+*.pid.lock
+coverage/
+.cache/
+logs/
+*.log
+log.txt

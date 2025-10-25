@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { useState } from "react";
+import { analyzeText } from "./services/api";
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [prompt, setPrompt] = useState("");
+  const [result, setResult] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleAnalyze = async () => {
+    try {
+      setLoading(true);
+      const data = await analyzeText(prompt);
+      setResult(data.response || "No result");
+    } catch (err) {
+      console.error(err);
+      setResult("Error fetching analysis.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <>
+    <div className="container">
+      <h1 className="title">FinSight AI 💼</h1>
+      <p className="helper">Enter any financial text or question and click Analyze.</p>
+
+      <textarea
+        className="textarea"
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
+        placeholder="e.g. Summarize Tesla's 2024 performance"
+      />
+
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button className="button" onClick={handleAnalyze} disabled={loading}>
+          {loading ? "Analyzing..." : "Analyze"}
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      {result && (
+        <div className="result">
+          <strong>Result:</strong>
+          <p>{result}</p>
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;

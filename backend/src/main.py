@@ -7,14 +7,21 @@ from .ai_service import analyze_text  # ← önemli
 
 app = FastAPI(title="FinSight AI")
 
-CORS_ORIGIN = os.getenv("CORS_ORIGIN", "http://localhost:5173")
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",   # bazı Vite sürümleri 127.0.0.1 ile çalışır
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[CORS_ORIGIN],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 class AnalyzeRequest(BaseModel):
     prompt: str
