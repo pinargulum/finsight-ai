@@ -1,17 +1,15 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
 import os
-
 from .ai_service import analyze_text  # ← önemli
 
 app = FastAPI(title="FinSight AI")
 
-from fastapi.middleware.cors import CORSMiddleware
-
 origins = [
     "http://localhost:5173",
-    "http://127.0.0.1:5173",   # bazı Vite sürümleri 127.0.0.1 ile çalışır
+    "http://127.0.0.1:5173",   
 ]
 
 app.add_middleware(
@@ -21,7 +19,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 class AnalyzeRequest(BaseModel):
     prompt: str

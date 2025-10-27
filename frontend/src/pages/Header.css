@@ -1,0 +1,70 @@
+.header-container {
+  display: flex;
+  position: relative;
+  justify-content: space-between; /* Başlık solda, butonlar sağda */
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #f8f9fb; /* Hafif gri ton, profesyonel görünüm */
+  border-bottom: 1px solid #e1e4e8;
+  font-family: 'Inter', sans-serif;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  gap: 0.75rem; /* Butonlar arasında boşluk */
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Register button style */
+.register-button {
+  background-color: #2d8cff;
+  color: white;
+}
+
+.register-button:hover {
+  background-color: #1e6fd9;
+}
+
+/* Login button style */
+.login-button {
+  background-color: white;
+  color: #2d8cff;
+  border: 1px solid #2d8cff;
+}
+
+.login-button:hover {
+  background-color: #f0f7ff;
+}
+
+/* Responsive düzen */
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  nav {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+}
