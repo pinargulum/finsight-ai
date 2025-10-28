@@ -2,14 +2,27 @@ import "./App.css";
 import { useState } from "react";
 import { analyzeText } from "./services/api";
 import Header from "./pages/Header";
-import Login from "../src/pages/Login";
-
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   const [prompt, setPrompt] = useState("");
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const [showForm, setShowForm] = useState(false);
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
+  const logingForm = () => {
+    setShowForm(true);
+  };
+  const registerForm = () => {
+    setShowRegisterForm(true);
+  };
+  const closeLoginForm = () => {
+    setShowForm(false);
+  };
+  const closeRegisterForm = () => {
+    setShowRegisterForm(false);
+  };
   const handleAnalyze = async () => {
     try {
       setLoading(true);
@@ -25,10 +38,21 @@ function App() {
 
   return (
     <div className="home-page">
-      <Header />
+      <Header
+        logingForm={logingForm}
+        registerForm={registerForm}
+      />
+       <Register
+        onClose={closeRegisterForm}
+        showRegisterForm={showRegisterForm}
+      />
+      <Login
+        showForm={showForm}
+        onClose={closeLoginForm}
+      />
       <div className="main-container">
         <h1 className="main-title">Welcome to FinSight AI</h1>
-       
+
         <p className="main-helper">
           Enter any financial text or question and click Analyze.
         </p>

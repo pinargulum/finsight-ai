@@ -1,12 +1,16 @@
 import "./Header.css"
-function Header() {
+import { useState } from "react";
+import Login from "./Login";
+function Header({ logingForm, registerForm }) {
+
   return (
     <header className="header-container">
       <h1 className="site-title">FinSight AI</h1>
       <nav>
-        <button className="register-button">Register</button>
-        <button className="login-button">Login</button>
+        <button onClick={registerForm} className="register-button">Register</button>
+        <button onClick={logingForm} className="login-button">Login</button>
       </nav>
+    
     </header>
   );
 }

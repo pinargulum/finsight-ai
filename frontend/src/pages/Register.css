@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -12,7 +12,7 @@
   text-align: center;
   font-family: "Inter", sans-serif;
 }
-.login-close-button {
+.register-close-button {
   display: flex;
   width: 40px;
   height: 40px;
@@ -29,7 +29,7 @@
   align-self: flex-end;
 }
 
-.login-title {
+.register-title {
   font-size: 1.5rem;
   font-weight: 600;
   color: #1e3a8a;
@@ -37,7 +37,7 @@
   margin-top: 0;
 }
 
-.login-input {
+.register-input {
   display: block;
   width: 100%;
   padding: 10px 0;
