@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import { analyzeText } from "./services/api";
+import { analyzeText, registerUser } from "./services/api";
 import Header from "./pages/Header";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -23,6 +23,7 @@ function App() {
   const closeRegisterForm = () => {
     setShowRegisterForm(false);
   };
+ 
   const handleAnalyze = async () => {
     try {
       setLoading(true);
@@ -41,10 +42,13 @@ function App() {
       <Header
         logingForm={logingForm}
         registerForm={registerForm}
+        closeRegisterForm={closeLoginForm}
+        closeLoginForm={closeLoginForm}
       />
        <Register
         onClose={closeRegisterForm}
         showRegisterForm={showRegisterForm}
+     
       />
       <Login
         showForm={showForm}
