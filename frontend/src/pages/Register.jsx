@@ -34,8 +34,6 @@ function Register({ showRegisterForm, onClose, handleRegister }) {
     }
   };
   return (
-    <>
-      {showRegisterForm && (
         <div className="register-container">
           <button
             onClick={onClose}
@@ -80,8 +78,7 @@ function Register({ showRegisterForm, onClose, handleRegister }) {
             </button>
           </form>
         </div>
-      )}
-    </>
+     
   );
 }
 export default Register;

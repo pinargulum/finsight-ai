@@ -1,19 +1,5 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
-
-export async function analyzeText(prompt) {
-  try {
-    const res = await fetch(`${API_BASE_URL}/analyze`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt }),
-    });
-    if (!res.ok) throw new Error(`API ${res.status}`);
-    return await res.json();
-  } catch (err) {
-    console.error(err);
-    return { response: "Request failed." };
-  }
-}
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
 
 export async function registerUser(email, password) {
   const res = await fetch(`${API_BASE_URL}/auth/register`, {
@@ -25,8 +11,8 @@ export async function registerUser(email, password) {
   return res.json();
 }
 
-export async function login(email, password) {
-  const res = await fetch(`${API}/auth/login`, {
+export async function loginUser(email, password) {
+  const res = await fetch(`${API_BASE_URL}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
@@ -48,9 +34,28 @@ export function getToken() {
 export async function getMe() {
   const token = getToken();
   if (!token) throw new Error("No token");
-  const res = await fetch(`${API}/auth/me`, {
+
+  const res = await fetch(`${API_BASE_URL}/auth/me`, {
     headers: { Authorization: `Bearer ${token}` },
   });
+
   if (!res.ok) throw new Error((await res.json()).detail || "Me failed");
   return res.json();
+}
+
+  export  function analyzeText(prompt) {
+  try {
+    const res =  fetch(`${API_BASE_URL}/analyze`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+       },
+      body: JSON.stringify({ prompt }),
+    });
+    if (!res.ok) throw new Error(`${res.status}`);
+    return  res.json();
+  } catch (err) {
+    console.error(err);
+    return { response: "Request failed." };
+  }
 }

@@ -1,3 +1,4 @@
+
 from pydantic import BaseModel, EmailStr, ConfigDict
 
 # ---- Basit şemalar (ObjectId yerine string id) ----
@@ -20,4 +21,3 @@ def to_user_public(doc: dict) -> UserPublic:
         id=str(doc.get("_id", "")),
         email=doc.get("email", "")
     )
-

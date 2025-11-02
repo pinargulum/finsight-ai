@@ -2,7 +2,7 @@ import os
 import base64
 import hashlib
 import hmac
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from jose import jwt, JWTError
 from dotenv import load_dotenv
 
@@ -46,7 +46,7 @@ def verify_password(password: str, hashed: str) -> bool:
         return False
 
 def create_access_token(sub: str) -> str:
-    expire = datetime.now(datetime.timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     return jwt.encode({"sub": sub, "exp": expire}, SECRET_KEY, algorithm=ALGORITHM)
 
 def decode_token(token: str) -> str | None:
